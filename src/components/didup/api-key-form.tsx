@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Key } from "lucide-react";
+import { Key, ArrowRight } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -18,7 +18,7 @@ import {
 import { Input } from "@/components/ui/input";
 
 const apiKeyFormSchema = z.object({
-  apiKey: z.string().min(1, { message: "API key cannot be empty." }),
+  apiKey: z.string().min(1, { message: "API key is required" }),
 });
 
 export type ApiKeyFormData = z.infer<typeof apiKeyFormSchema>;
@@ -44,7 +44,6 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
           name="apiKey"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Todoist API Key</FormLabel>
               <FormControl>
                 <div className="relative">
                   <div className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2">
@@ -52,21 +51,22 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
                   </div>
                   <Input
                     placeholder="Enter your Todoist API key"
-                    className="pl-9"
+                    className="bg-card/30 border-border/50 focus-visible:ring-primary/20 pl-9"
                     {...field}
                   />
                 </div>
               </FormControl>
-              <FormDescription>
-                You can find your API token in your Todoist settings under
-                Integrations &gt; Developer.
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
+        <Button
+          type="submit"
+          disabled={isLoading}
+          className="flex w-full items-center justify-center gap-2 rounded-md"
+        >
           {isLoading ? "Connecting..." : "Connect Todoist"}
+          {!isLoading && <ArrowRight className="h-4 w-4" />}
         </Button>
       </form>
     </Form>

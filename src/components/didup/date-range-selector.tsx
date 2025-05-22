@@ -94,7 +94,13 @@ export function DateRangeSelector({
           variant={selectedFilter === "today" ? "default" : "outline"}
           onClick={() => handlePresetClick("today")}
           disabled={disabled}
-          className="px-4"
+          size="sm"
+          className={cn(
+            "h-9 rounded-md text-sm font-normal",
+            selectedFilter === "today"
+              ? "bg-primary/90 text-primary-foreground hover:bg-primary"
+              : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
+          )}
         >
           Today
         </Button>
@@ -102,7 +108,13 @@ export function DateRangeSelector({
           variant={selectedFilter === "next7days" ? "default" : "outline"}
           onClick={() => handlePresetClick("next7days")}
           disabled={disabled}
-          className="px-4"
+          size="sm"
+          className={cn(
+            "h-9 rounded-md text-sm font-normal",
+            selectedFilter === "next7days"
+              ? "bg-primary/90 text-primary-foreground hover:bg-primary"
+              : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
+          )}
         >
           Next 7 Days
         </Button>
@@ -112,8 +124,12 @@ export function DateRangeSelector({
             <Button
               id="date"
               variant={selectedFilter === "custom" ? "default" : "outline"}
+              size="sm"
               className={cn(
-                "min-w-[240px] justify-start text-left",
+                "ml-auto h-9 min-w-[220px] justify-start rounded-md text-sm font-normal",
+                selectedFilter === "custom"
+                  ? "bg-primary/90 text-primary-foreground hover:bg-primary"
+                  : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
                 !date && "text-muted-foreground",
               )}
               disabled={disabled}
@@ -129,11 +145,11 @@ export function DateRangeSelector({
                   format(date.from, "MMM dd, yyyy")
                 )
               ) : (
-                <span>Pick a date range</span>
+                <span>Custom range</span>
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="w-auto p-0" align="start">
+          <PopoverContent className="border-border/50 w-auto p-0" align="end">
             <Calendar
               initialFocus
               mode="range"
