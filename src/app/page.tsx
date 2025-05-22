@@ -9,6 +9,12 @@ import {
   MarqueeItem,
 } from "@/components/ui/kibo-ui/marquee";
 import {
+  Pill,
+  PillIndicator,
+  PillStatus,
+  PillIcon,
+} from "@/components/ui/kibo-ui/pill";
+import {
   ArrowRight,
   BookOpen,
   BrainCircuit,
@@ -22,6 +28,15 @@ import {
   FileText,
   Database,
   Mail,
+  Clock,
+  Target,
+  TrendingUp,
+  BarChart3,
+  Brain,
+  Share2,
+  CheckCircle2,
+  Activity,
+  Layers,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -264,67 +279,246 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Features Section */}
-          <div className="mx-auto max-w-5xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-foreground text-3xl font-bold">
-                One place for your entire work story
+          {/* Enhanced Features Section */}
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16 text-center">
+              <div className="bg-primary/10 text-primary mb-4 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium">
+                <Layers className="mr-2 h-4 w-4" />
+                <span>Your Complete Work Ecosystem</span>
+              </div>
+              <h2 className="text-foreground text-4xl font-bold tracking-tight md:text-5xl">
+                One place for your{" "}
+                <span className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-transparent">
+                  entire work story
+                </span>
               </h2>
-              <p className="text-muted-foreground mx-auto mt-3 max-w-2xl">
-                Transform scattered activities into meaningful insights about
-                your work journey
+              <p className="text-muted-foreground mx-auto mt-4 max-w-3xl text-xl leading-relaxed">
+                Transform scattered activities into meaningful insights. See
+                patterns, celebrate progress, and never lose track of your
+                professional journey again.
               </p>
             </div>
 
-            <div className="grid gap-8 md:grid-cols-3">
-              <Card className="bg-card/50 border-border/30 overflow-hidden border">
-                <div className="bg-primary/10 h-1.5 w-full"></div>
-                <CardContent className="space-y-3 p-6">
-                  <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-                    <Zap className="h-5 w-5" />
+            {/* Interactive Demo Section */}
+            <div className="mb-16 grid gap-8 lg:grid-cols-2 lg:gap-12">
+              <div className="space-y-8">
+                <div className="space-y-6">
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/10 text-primary flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
+                      <Activity className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-foreground text-xl font-semibold">
+                        Unified Activity Timeline
+                      </h3>
+                      <p className="text-muted-foreground mt-2 text-base leading-relaxed">
+                        Every task, meeting, commit, and message in one
+                        chronological view. See the full picture of your work
+                        across all platforms.
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <Pill className="border-blue-500/20 bg-blue-500/10 text-blue-600">
+                          <PillIndicator variant="info" />
+                          <PillStatus>Tasks</PillStatus>
+                          <span>12 completed</span>
+                        </Pill>
+                        <Pill className="border-green-500/20 bg-green-500/10 text-green-600">
+                          <PillIndicator variant="success" />
+                          <PillStatus>Meetings</PillStatus>
+                          <span>8 attended</span>
+                        </Pill>
+                        <Pill className="border-purple-500/20 bg-purple-500/10 text-purple-600">
+                          <PillIndicator variant="info" />
+                          <PillStatus>Commits</PillStatus>
+                          <span>23 pushed</span>
+                        </Pill>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-foreground text-xl font-medium">
-                    Unified timeline
-                  </h3>
-                  <p className="text-muted-foreground">
-                    See everything you worked on across all platforms in one
-                    chronological view. No more hunting through different apps.
-                  </p>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-card/50 border-border/30 overflow-hidden border">
-                <div className="bg-primary/10 h-1.5 w-full"></div>
-                <CardContent className="space-y-3 p-6">
-                  <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-                    <BrainCircuit className="h-5 w-5" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/10 text-primary flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
+                      <Brain className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-foreground text-xl font-semibold">
+                        AI-Powered Insights
+                      </h3>
+                      <p className="text-muted-foreground mt-2 text-base leading-relaxed">
+                        Smart analysis of your work patterns reveals
+                        productivity trends, collaboration insights, and
+                        meaningful accomplishments.
+                      </p>
+                      <div className="mt-4 flex flex-wrap gap-2">
+                        <Pill className="border-amber-500/20 bg-amber-500/10 text-amber-600">
+                          <PillIcon icon={TrendingUp} />
+                          <span>Productivity +15%</span>
+                        </Pill>
+                        <Pill className="border-emerald-500/20 bg-emerald-500/10 text-emerald-600">
+                          <PillIcon icon={Target} />
+                          <span>Goals on track</span>
+                        </Pill>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-foreground text-xl font-medium">
-                    Smart insights
-                  </h3>
-                  <p className="text-muted-foreground">
-                    AI analyzes your work patterns across tools to give you
-                    meaningful summaries and help you understand your impact.
-                  </p>
-                </CardContent>
-              </Card>
 
-              <Card className="bg-card/50 border-border/30 overflow-hidden border">
-                <div className="bg-primary/10 h-1.5 w-full"></div>
-                <CardContent className="space-y-3 p-6">
-                  <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-                    <BookOpen className="h-5 w-5" />
+                  <div className="flex items-start gap-4">
+                    <div className="bg-primary/10 text-primary flex h-12 w-12 shrink-0 items-center justify-center rounded-xl">
+                      <Share2 className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <h3 className="text-foreground text-xl font-semibold">
+                        Instant Sharing & Reports
+                      </h3>
+                      <p className="text-muted-foreground mt-2 text-base leading-relaxed">
+                        Generate beautiful summaries for standups, reviews, or
+                        reports in seconds. Your work story, perfectly
+                        presented.
+                      </p>
+                      <div className="mt-4">
+                        <Pill className="border-indigo-500/20 bg-indigo-500/10 text-indigo-600">
+                          <PillIcon icon={Clock} />
+                          <span>Ready in 3 seconds</span>
+                        </Pill>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="text-foreground text-xl font-medium">
-                    Easy sharing
-                  </h3>
-                  <p className="text-muted-foreground">
-                    Quickly generate summaries for standups, reviews, or
-                    reports. Never struggle to remember what you&apos;ve been
-                    working on.
-                  </p>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
+
+              {/* Interactive Preview */}
+              <div className="relative">
+                <div className="border-border/40 bg-card/30 sticky top-8 overflow-hidden rounded-2xl border shadow-2xl">
+                  <div className="bg-card/50 border-border/30 border-b p-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="flex gap-1.5">
+                          <div className="bg-destructive h-3 w-3 rounded-full"></div>
+                          <div className="bg-primary h-3 w-3 rounded-full"></div>
+                          <div className="bg-secondary h-3 w-3 rounded-full"></div>
+                        </div>
+                        <span className="text-muted-foreground text-sm font-medium">
+                          Your Work Dashboard
+                        </span>
+                      </div>
+                      <div className="flex gap-2">
+                        <Pill className="border-green-500/20 bg-green-500/10 text-green-600">
+                          <PillIndicator variant="success" pulse />
+                          <span>Live</span>
+                        </Pill>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4 p-6">
+                    <div className="space-y-3">
+                      <h4 className="text-foreground flex items-center gap-2 font-medium">
+                        <BarChart3 className="h-4 w-4" />
+                        This Week&apos;s Impact
+                      </h4>
+                      <div className="space-y-2">
+                        <div className="flex items-center justify-between">
+                          <span className="text-muted-foreground text-sm">
+                            Tasks Completed
+                          </span>
+                          <Pill className="border-blue-500/20 bg-blue-500/10 text-blue-600">
+                            <span className="font-medium">24</span>
+                          </Pill>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-muted-foreground text-sm">
+                            Code Reviews
+                          </span>
+                          <Pill className="border-purple-500/20 bg-purple-500/10 text-purple-600">
+                            <span className="font-medium">8</span>
+                          </Pill>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <span className="text-muted-foreground text-sm">
+                            Team Meetings
+                          </span>
+                          <Pill className="border-green-500/20 bg-green-500/10 text-green-600">
+                            <span className="font-medium">12</span>
+                          </Pill>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="border-border/30 border-t pt-4">
+                      <h4 className="text-foreground mb-3 flex items-center gap-2 font-medium">
+                        <Sparkles className="h-4 w-4" />
+                        AI Summary
+                      </h4>
+                      <div className="bg-primary/5 border-primary/20 rounded-lg border p-3">
+                        <p className="text-foreground text-sm leading-relaxed">
+                          &quot;This week you&apos;ve shown exceptional focus on
+                          the authentication system, completing 8 related tasks
+                          and conducting thorough code reviews. Your
+                          collaboration in team meetings has been particularly
+                          valuable for project alignment.&quot;
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-2">
+                      <Button size="sm" className="flex-1">
+                        <Share2 className="mr-2 h-4 w-4" />
+                        Share Summary
+                      </Button>
+                      <Button variant="outline" size="sm">
+                        <FileText className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Stats Section */}
+            <div className="border-border/30 bg-card/30 rounded-2xl border p-8 md:p-12">
+              <div className="mb-8 text-center">
+                <h3 className="text-foreground text-2xl font-bold">
+                  Transform how you track your work
+                </h3>
+                <p className="text-muted-foreground mt-2">
+                  Join professionals who never lose track of their
+                  accomplishments
+                </p>
+              </div>
+
+              <div className="grid gap-8 md:grid-cols-3">
+                <div className="text-center">
+                  <div className="bg-primary/10 text-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                    <CheckCircle2 className="h-8 w-8" />
+                  </div>
+                  <div className="text-foreground text-3xl font-bold">
+                    15min
+                  </div>
+                  <div className="text-muted-foreground text-sm">
+                    Average time saved per standup
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="bg-primary/10 text-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                    <TrendingUp className="h-8 w-8" />
+                  </div>
+                  <div className="text-foreground text-3xl font-bold">40%</div>
+                  <div className="text-muted-foreground text-sm">
+                    Better visibility into work patterns
+                  </div>
+                </div>
+
+                <div className="text-center">
+                  <div className="bg-primary/10 text-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                    <Layers className="h-8 w-8" />
+                  </div>
+                  <div className="text-foreground text-3xl font-bold">8+</div>
+                  <div className="text-muted-foreground text-sm">
+                    Integrations planned for 2024
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
