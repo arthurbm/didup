@@ -15,6 +15,14 @@ import {
   PillIcon,
 } from "@/components/ui/kibo-ui/pill";
 import {
+  GoogleCalendarIcon,
+  SlackIcon,
+  NotionIcon,
+  GMailIcon,
+  GitHubDarkIcon,
+  LinearDarkIcon,
+} from "@trigger.dev/companyicons";
+import {
   ArrowRight,
   BookOpen,
   BrainCircuit,
@@ -160,118 +168,179 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Integrations Preview */}
+          {/* Integrations Preview - Elegant & Minimalist */}
           <div className="mx-auto max-w-6xl">
-            <div className="mb-12 text-center">
-              <h2 className="text-foreground text-3xl font-bold">
-                Connect your scattered work tools
+            <div className="mb-16 text-center">
+              <div className="bg-primary/5 text-primary mb-6 inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium">
+                <Sparkles className="mr-2 h-3.5 w-3.5" />
+                <span>Seamless Integrations</span>
+              </div>
+              <h2 className="text-foreground text-3xl font-bold tracking-tight md:text-4xl">
+                Connect your{" "}
+                <span className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-transparent">
+                  scattered work tools
+                </span>
               </h2>
-              <p className="text-muted-foreground mx-auto mt-3 max-w-2xl">
-                Didup integrates with the tools you already use, creating a
-                unified view of your work across platforms
+              <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg leading-relaxed">
+                One unified timeline across all your favorite platforms. No more
+                context switching or forgotten accomplishments.
               </p>
             </div>
 
-            <div className="relative">
-              <Marquee className="py-4">
-                <MarqueeFade side="left" />
-                <MarqueeFade side="right" />
-                <MarqueeContent speed={30} pauseOnHover={true}>
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/10 text-blue-600">
-                        <Calendar className="h-6 w-6" />
+            <div className="relative overflow-hidden">
+              <Marquee className="py-8">
+                <MarqueeFade side="left" className="w-32" />
+                <MarqueeFade side="right" className="w-32" />
+                <MarqueeContent speed={25} pauseOnHover={true}>
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <Calendar className="h-8 w-8 text-blue-600 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">Todoist</span>
-                      <span className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-600">
-                        Available
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Todoist
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-green-500/10 px-2 py-0.5 text-xs font-medium text-green-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-green-500"></div>
+                            Available
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10 text-green-600">
-                        <Calendar className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <GoogleCalendarIcon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">
-                        Google Calendar
-                      </span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Calendar
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-500/10 text-orange-600">
-                        <Zap className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <Zap className="h-8 w-8 text-blue-500 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">Jira</span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Jira
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 text-purple-600">
-                        <GitBranch className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <GitHubDarkIcon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">GitHub</span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          GitHub
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-600">
-                        <MessageSquare className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <SlackIcon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">Slack</span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Slack
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500/10 text-red-600">
-                        <FileText className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <NotionIcon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">Notion</span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Notion
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-600">
-                        <Database className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <LinearDarkIcon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">Linear</span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Linear
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
 
-                  <MarqueeItem className="mx-4">
-                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500/10 text-yellow-600">
-                        <Mail className="h-6 w-6" />
+                  <MarqueeItem className="mx-6">
+                    <div className="group relative">
+                      <div className="bg-background/80 border-border/50 group-hover:border-primary/30 group-hover:shadow-primary/10 flex h-20 w-20 items-center justify-center rounded-2xl border backdrop-blur-sm transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg">
+                        <GMailIcon className="h-8 w-8 transition-transform duration-300 group-hover:scale-110" />
                       </div>
-                      <span className="text-sm font-medium">Gmail</span>
-                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
-                        Coming Soon
-                      </span>
+                      <div className="mt-3 text-center">
+                        <p className="text-foreground text-sm font-medium">
+                          Gmail
+                        </p>
+                        <div className="mt-1 flex justify-center">
+                          <div className="flex items-center gap-1 rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-600">
+                            <div className="h-1.5 w-1.5 rounded-full bg-amber-500"></div>
+                            Soon
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </MarqueeItem>
                 </MarqueeContent>
@@ -299,8 +368,8 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* Interactive Demo Section */}
-            <div className="mb-16 grid gap-8 lg:grid-cols-2 lg:gap-12">
+            {/* Interactive Demo Section - Mobile Responsive */}
+            <div className="mb-16 space-y-12 lg:grid lg:grid-cols-2 lg:gap-12 lg:space-y-0">
               <div className="space-y-8">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
@@ -319,17 +388,26 @@ export default function HomePage() {
                       <div className="mt-4 flex flex-wrap gap-2">
                         <Pill className="border-blue-500/20 bg-blue-500/10 text-blue-600">
                           <PillIndicator variant="info" />
-                          <PillStatus>Tasks</PillStatus>
+                          <PillStatus className="hidden sm:block">
+                            Tasks
+                          </PillStatus>
+                          <span className="sm:hidden">Tasks:</span>
                           <span>12 completed</span>
                         </Pill>
                         <Pill className="border-green-500/20 bg-green-500/10 text-green-600">
                           <PillIndicator variant="success" />
-                          <PillStatus>Meetings</PillStatus>
+                          <PillStatus className="hidden sm:block">
+                            Meetings
+                          </PillStatus>
+                          <span className="sm:hidden">Meetings:</span>
                           <span>8 attended</span>
                         </Pill>
                         <Pill className="border-purple-500/20 bg-purple-500/10 text-purple-600">
                           <PillIndicator variant="info" />
-                          <PillStatus>Commits</PillStatus>
+                          <PillStatus className="hidden sm:block">
+                            Commits
+                          </PillStatus>
+                          <span className="sm:hidden">Commits:</span>
                           <span>23 pushed</span>
                         </Pill>
                       </div>
@@ -386,23 +464,23 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* Interactive Preview */}
+              {/* Interactive Preview - Mobile Optimized */}
               <div className="relative">
-                <div className="border-border/40 bg-card/30 sticky top-8 overflow-hidden rounded-2xl border shadow-2xl">
-                  <div className="bg-card/50 border-border/30 border-b p-4">
+                <div className="border-border/40 bg-card/30 overflow-hidden rounded-2xl border shadow-2xl lg:sticky lg:top-8">
+                  <div className="bg-card/50 border-border/30 border-b p-3 sm:p-4">
                     <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-2 sm:gap-3">
                         <div className="flex gap-1.5">
-                          <div className="bg-destructive h-3 w-3 rounded-full"></div>
-                          <div className="bg-primary h-3 w-3 rounded-full"></div>
-                          <div className="bg-secondary h-3 w-3 rounded-full"></div>
+                          <div className="bg-destructive h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"></div>
+                          <div className="bg-primary h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"></div>
+                          <div className="bg-secondary h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"></div>
                         </div>
-                        <span className="text-muted-foreground text-sm font-medium">
+                        <span className="text-muted-foreground text-xs font-medium sm:text-sm">
                           Your Work Dashboard
                         </span>
                       </div>
                       <div className="flex gap-2">
-                        <Pill className="border-green-500/20 bg-green-500/10 text-green-600">
+                        <Pill className="border-green-500/20 bg-green-500/10 text-xs text-green-600">
                           <PillIndicator variant="success" pulse />
                           <span>Live</span>
                         </Pill>
@@ -410,34 +488,34 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="space-y-4 p-6">
+                  <div className="space-y-4 p-4 sm:p-6">
                     <div className="space-y-3">
-                      <h4 className="text-foreground flex items-center gap-2 font-medium">
-                        <BarChart3 className="h-4 w-4" />
+                      <h4 className="text-foreground flex items-center gap-2 text-sm font-medium sm:text-base">
+                        <BarChart3 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         This Week&apos;s Impact
                       </h4>
                       <div className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground text-sm">
+                          <span className="text-muted-foreground text-xs sm:text-sm">
                             Tasks Completed
                           </span>
-                          <Pill className="border-blue-500/20 bg-blue-500/10 text-blue-600">
+                          <Pill className="border-blue-500/20 bg-blue-500/10 text-xs text-blue-600">
                             <span className="font-medium">24</span>
                           </Pill>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground text-sm">
+                          <span className="text-muted-foreground text-xs sm:text-sm">
                             Code Reviews
                           </span>
-                          <Pill className="border-purple-500/20 bg-purple-500/10 text-purple-600">
+                          <Pill className="border-purple-500/20 bg-purple-500/10 text-xs text-purple-600">
                             <span className="font-medium">8</span>
                           </Pill>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-muted-foreground text-sm">
+                          <span className="text-muted-foreground text-xs sm:text-sm">
                             Team Meetings
                           </span>
-                          <Pill className="border-green-500/20 bg-green-500/10 text-green-600">
+                          <Pill className="border-green-500/20 bg-green-500/10 text-xs text-green-600">
                             <span className="font-medium">12</span>
                           </Pill>
                         </div>
@@ -445,12 +523,12 @@ export default function HomePage() {
                     </div>
 
                     <div className="border-border/30 border-t pt-4">
-                      <h4 className="text-foreground mb-3 flex items-center gap-2 font-medium">
-                        <Sparkles className="h-4 w-4" />
+                      <h4 className="text-foreground mb-3 flex items-center gap-2 text-sm font-medium sm:text-base">
+                        <Sparkles className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                         AI Summary
                       </h4>
                       <div className="bg-primary/5 border-primary/20 rounded-lg border p-3">
-                        <p className="text-foreground text-sm leading-relaxed">
+                        <p className="text-foreground text-xs leading-relaxed sm:text-sm">
                           &quot;This week you&apos;ve shown exceptional focus on
                           the authentication system, completing 8 related tasks
                           and conducting thorough code reviews. Your
@@ -461,12 +539,17 @@ export default function HomePage() {
                     </div>
 
                     <div className="flex gap-2">
-                      <Button size="sm" className="flex-1">
-                        <Share2 className="mr-2 h-4 w-4" />
-                        Share Summary
+                      <Button size="sm" className="flex-1 text-xs sm:text-sm">
+                        <Share2 className="mr-1.5 h-3.5 w-3.5 sm:mr-2 sm:h-4 sm:w-4" />
+                        <span className="hidden sm:inline">Share Summary</span>
+                        <span className="sm:hidden">Share</span>
                       </Button>
-                      <Button variant="outline" size="sm">
-                        <FileText className="h-4 w-4" />
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-xs sm:text-sm"
+                      >
+                        <FileText className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
                       </Button>
                     </div>
                   </div>
@@ -475,12 +558,15 @@ export default function HomePage() {
             </div>
 
             {/* Stats Section */}
-            <div className="border-border/30 bg-card/30 rounded-2xl border p-8 md:p-12">
-              <div className="mb-8 text-center">
-                <h3 className="text-foreground text-2xl font-bold">
-                  Transform how you track your work
+            <div className="border-border/30 bg-card/50 rounded-2xl border p-8 md:p-12">
+              <div className="mb-12 text-center">
+                <h3 className="text-foreground text-3xl font-bold tracking-tight md:text-4xl">
+                  Transform how you{" "}
+                  <span className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-transparent">
+                    track your work
+                  </span>
                 </h3>
-                <p className="text-muted-foreground mt-2">
+                <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-lg leading-relaxed">
                   Join professionals who never lose track of their
                   accomplishments
                 </p>
@@ -488,33 +574,37 @@ export default function HomePage() {
 
               <div className="grid gap-8 md:grid-cols-3">
                 <div className="text-center">
-                  <div className="bg-primary/10 text-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                  <div className="bg-primary/10 text-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl">
                     <CheckCircle2 className="h-8 w-8" />
                   </div>
-                  <div className="text-foreground text-3xl font-bold">
+                  <div className="text-foreground mb-2 text-3xl font-bold">
                     15min
                   </div>
-                  <div className="text-muted-foreground text-sm">
-                    Average time saved per standup
+                  <div className="text-muted-foreground text-sm leading-relaxed">
+                    Average time saved per standup meeting
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="bg-primary/10 text-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                  <div className="bg-primary/10 text-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl">
                     <TrendingUp className="h-8 w-8" />
                   </div>
-                  <div className="text-foreground text-3xl font-bold">40%</div>
-                  <div className="text-muted-foreground text-sm">
+                  <div className="text-foreground mb-2 text-3xl font-bold">
+                    3x
+                  </div>
+                  <div className="text-muted-foreground text-sm leading-relaxed">
                     Better visibility into work patterns
                   </div>
                 </div>
 
                 <div className="text-center">
-                  <div className="bg-primary/10 text-primary mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-2xl">
+                  <div className="bg-primary/10 text-primary mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl">
                     <Layers className="h-8 w-8" />
                   </div>
-                  <div className="text-foreground text-3xl font-bold">8+</div>
-                  <div className="text-muted-foreground text-sm">
+                  <div className="text-foreground mb-2 text-3xl font-bold">
+                    8+
+                  </div>
+                  <div className="text-muted-foreground text-sm leading-relaxed">
                     Integrations planned for 2024
                   </div>
                 </div>
