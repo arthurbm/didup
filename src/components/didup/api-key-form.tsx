@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { Key } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -45,7 +46,16 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
             <FormItem>
               <FormLabel>Todoist API Key</FormLabel>
               <FormControl>
-                <Input placeholder="Enter your Todoist API key" {...field} />
+                <div className="relative">
+                  <div className="text-muted-foreground absolute top-1/2 left-3 -translate-y-1/2">
+                    <Key className="h-4 w-4" />
+                  </div>
+                  <Input
+                    placeholder="Enter your Todoist API key"
+                    className="pl-9"
+                    {...field}
+                  />
+                </div>
               </FormControl>
               <FormDescription>
                 You can find your API token in your Todoist settings under
@@ -55,7 +65,7 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
             </FormItem>
           )}
         />
-        <Button type="submit" disabled={isLoading}>
+        <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
           {isLoading ? "Connecting..." : "Connect Todoist"}
         </Button>
       </form>

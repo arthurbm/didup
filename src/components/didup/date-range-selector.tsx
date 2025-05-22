@@ -142,6 +142,7 @@ export function DateRangeSelector({
               onSelect={handleDateSelect}
               numberOfMonths={2}
               disabled={disabled}
+              className="bg-popover"
             />
           </PopoverContent>
         </Popover>

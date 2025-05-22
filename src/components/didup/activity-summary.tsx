@@ -2,6 +2,7 @@
 
 import { type Task } from "@doist/todoist-api-typescript";
 import { format, parseISO, isValid } from "date-fns";
+import { CheckCircle2, Loader2 } from "lucide-react";
 
 interface ActivitySummaryProps {
   tasks: Task[] | null;
@@ -24,8 +25,8 @@ export function ActivitySummary({
     return (
       <div className="flex h-40 items-center justify-center">
         <div className="flex animate-pulse flex-col items-center gap-4">
-          <div className="h-12 w-12 animate-spin rounded-full border-4 border-t-blue-500 border-r-transparent border-b-blue-500 border-l-transparent" />
-          <p className="font-medium text-blue-600">Loading your tasks...</p>
+          <div className="border-t-primary border-b-primary h-12 w-12 animate-spin rounded-full border-4 border-r-transparent border-l-transparent" />
+          <p className="text-primary font-medium">Loading your tasks...</p>
         </div>
       </div>
     );
@@ -33,7 +34,7 @@ export function ActivitySummary({
 
   if (tasksError) {
     return (
-      <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
+      <div className="bg-destructive/10 border-destructive/30 text-destructive rounded-lg border p-4">
         <h3 className="mb-2 text-lg font-semibold">Error Loading Tasks</h3>
         <p>{tasksError.message}</p>
       </div>
@@ -67,9 +68,13 @@ export function ActivitySummary({
             }
           }
 
-          // Use nullish coalescing assignment to initialize array if needed
-          groups[dateKey] ??= [];
-          groups[dateKey].push(task);
+          // Initialize the array if it doesn't exist using nullish coalescing
+          // This is a safer approach than the previous one
+          if (groups) {
+            groups[dateKey] = groups[dateKey] ?? [];
+            // Now we know for sure groups[dateKey] exists
+            groups[dateKey]?.push(task);
+          }
           return groups;
         }, {})
       : {};
@@ -81,32 +86,32 @@ export function ActivitySummary({
       {/* Tasks Section */}
       {hasGroups ? (
         <div>
-          <h2 className="mb-4 text-2xl font-semibold text-gray-800">
+          <h2 className="text-foreground mb-4 text-2xl font-semibold">
             Your Tasks
           </h2>
           <div className="space-y-6">
             {Object.entries(groupedTasks).map(([dateGroup, taskList]) => (
               <div key={dateGroup} className="space-y-2">
-                <h3 className="border-b border-indigo-200 pb-1 text-lg font-medium text-indigo-700">
+                <h3 className="text-primary border-border border-b pb-1 text-lg font-medium">
                   {dateGroup}
                 </h3>
                 <ul className="space-y-2">
                   {taskList.map((task) => (
                     <li
                       key={task.id}
-                      className="flex items-start rounded-md p-2 transition-colors hover:bg-slate-50"
+                      className="hover:bg-accent flex items-start rounded-md p-2 transition-colors"
                     >
                       <div className="mt-0.5 mr-3 h-5 w-5 flex-shrink-0">
                         <div
-                          className={`h-4 w-4 rounded-full border-2 ${getPriorityColor(task.priority)}`}
+                          className={`h-4 w-4 rounded-full border-2 ${getPriorityBorderClass(task.priority)}`}
                         ></div>
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="font-medium break-words text-gray-800">
+                        <p className="text-foreground font-medium break-words">
                           {task.content}
                         </p>
                         {task.description && (
-                          <p className="mt-1 line-clamp-2 text-sm text-gray-500">
+                          <p className="text-muted-foreground mt-1 line-clamp-2 text-sm">
                             {task.description}
                           </p>
                         )}
@@ -115,7 +120,7 @@ export function ActivitySummary({
                             {task.labels.map((label) => (
                               <span
                                 key={label}
-                                className="rounded-full bg-blue-100 px-2 py-0.5 text-xs text-blue-800"
+                                className="bg-secondary text-secondary-foreground rounded-full px-2 py-0.5 text-xs"
                               >
                                 {label}
                               </span>
@@ -132,7 +137,7 @@ export function ActivitySummary({
         </div>
       ) : (
         !isLoadingTasks && (
-          <div className="rounded-lg border border-yellow-100 bg-yellow-50 p-4 text-yellow-800">
+          <div className="bg-accent border-border text-muted-foreground rounded-lg border p-4">
             <p>No tasks found for the selected period.</p>
           </div>
         )
@@ -140,17 +145,17 @@ export function ActivitySummary({
 
       {/* AI Summary Section */}
       <div className="mt-8">
-        <h2 className="mb-4 text-2xl font-semibold text-gray-800">
+        <h2 className="text-foreground mb-4 text-2xl font-semibold">
           AI Summary
         </h2>
 
         {isLoadingSummary && (
-          <div className="h-32 rounded-lg border border-slate-200 bg-slate-50 p-6">
+          <div className="bg-accent border-border h-32 rounded-lg border p-6">
             <div className="flex items-center gap-1">
-              <div className="h-2 w-2 animate-bounce rounded-full bg-blue-600 [animation-delay:-0.3s]"></div>
-              <div className="h-2 w-2 animate-bounce rounded-full bg-blue-600 [animation-delay:-0.15s]"></div>
-              <div className="h-2 w-2 animate-bounce rounded-full bg-blue-600"></div>
-              <span className="ml-2 text-blue-600">
+              <div className="bg-primary h-2 w-2 animate-bounce rounded-full [animation-delay:-0.3s]"></div>
+              <div className="bg-primary h-2 w-2 animate-bounce rounded-full [animation-delay:-0.15s]"></div>
+              <div className="bg-primary h-2 w-2 animate-bounce rounded-full"></div>
+              <span className="text-primary ml-2">
                 Generating your summary...
               </span>
             </div>
@@ -158,14 +163,14 @@ export function ActivitySummary({
         )}
 
         {summaryError && (
-          <div className="rounded-lg border border-red-200 bg-red-50 p-4 text-red-700">
+          <div className="bg-destructive/10 border-destructive/30 text-destructive rounded-lg border p-4">
             <p>Error generating summary: {summaryError.message}</p>
           </div>
         )}
 
         {summary && !isLoadingSummary && (
-          <div className="rounded-lg border border-indigo-100 bg-gradient-to-br from-indigo-50 to-blue-50 p-6 shadow-sm">
-            <p className="leading-relaxed whitespace-pre-wrap text-gray-800">
+          <div className="bg-card border-border rounded-lg border p-6 shadow-sm">
+            <p className="text-foreground leading-relaxed whitespace-pre-wrap">
               {summary}
             </p>
           </div>
@@ -175,17 +180,17 @@ export function ActivitySummary({
   );
 }
 
-// Helper function to get color based on task priority
-function getPriorityColor(priority: number): string {
+// Helper function to get border color class based on task priority
+function getPriorityBorderClass(priority: number): string {
   switch (priority) {
     case 4: // Highest
-      return "border-red-600";
+      return "border-destructive";
     case 3:
-      return "border-orange-500";
+      return "border-primary";
     case 2:
-      return "border-blue-500";
+      return "border-secondary";
     case 1:
     default:
-      return "border-gray-400";
+      return "border-muted";
   }
 }
