@@ -124,7 +124,7 @@ export function ActivitySummary({
                             {task.labels.map((label) => (
                               <span
                                 key={label}
-                                className="bg-secondary/30 text-secondary-foreground rounded-sm px-1.5 py-0.5 text-[10px]"
+                                className="bg-secondary text-secondary-foreground rounded-sm px-1.5 py-0.5 text-[10px]"
                               >
                                 {label}
                               </span>

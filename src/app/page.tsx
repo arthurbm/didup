@@ -169,7 +169,7 @@ export default function HomePage() {
   const tasksErrorData = todoistTasksQuery.error ?? null;
 
   return (
-    <div className="bg-background flex min-h-screen flex-col dark:bg-black">
+    <div className="bg-background dark:bg-background flex min-h-screen flex-col">
       {/* Minimal navbar */}
       <header className="border-border/10 border-b py-4">
         <div className="container mx-auto flex items-center justify-between px-4">

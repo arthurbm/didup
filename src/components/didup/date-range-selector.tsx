@@ -98,7 +98,7 @@ export function DateRangeSelector({
           className={cn(
             "h-9 rounded-md text-sm font-normal",
             selectedFilter === "today"
-              ? "bg-primary/90 text-primary-foreground hover:bg-primary"
+              ? "bg-primary text-primary-foreground hover:bg-primary/90"
               : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
           )}
         >
@@ -112,7 +112,7 @@ export function DateRangeSelector({
           className={cn(
             "h-9 rounded-md text-sm font-normal",
             selectedFilter === "next7days"
-              ? "bg-primary/90 text-primary-foreground hover:bg-primary"
+              ? "bg-primary text-primary-foreground hover:bg-primary/90"
               : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
           )}
         >
@@ -128,7 +128,7 @@ export function DateRangeSelector({
               className={cn(
                 "ml-auto h-9 min-w-[220px] justify-start rounded-md text-sm font-normal",
                 selectedFilter === "custom"
-                  ? "bg-primary/90 text-primary-foreground hover:bg-primary"
+                  ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
                 !date && "text-muted-foreground",
               )}
