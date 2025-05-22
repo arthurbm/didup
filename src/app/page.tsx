@@ -3,6 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
+  Marquee,
+  MarqueeContent,
+  MarqueeFade,
+  MarqueeItem,
+} from "@/components/ui/kibo-ui/marquee";
+import {
   ArrowRight,
   BookOpen,
   BrainCircuit,
@@ -12,6 +18,10 @@ import {
   Zap,
   GitBranch,
   Users,
+  MessageSquare,
+  FileText,
+  Database,
+  Mail,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -57,10 +67,9 @@ export default function HomePage() {
               </h1>
 
               <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-xl leading-relaxed">
-                Stop struggling to remember what you worked on across Todoist,
-                Jira, Calendar, and other scattered tools. Didup brings
-                everything together and helps you reflect on your complete work
-                story.
+                Stop struggling to remember what you worked on across scattered
+                tools. Didup brings everything together and helps you reflect on
+                your complete work story.
               </p>
 
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
@@ -137,7 +146,7 @@ export default function HomePage() {
           </div>
 
           {/* Integrations Preview */}
-          <div className="mx-auto max-w-5xl">
+          <div className="mx-auto max-w-6xl">
             <div className="mb-12 text-center">
               <h2 className="text-foreground text-3xl font-bold">
                 Connect your scattered work tools
@@ -148,48 +157,110 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-6">
-              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-600">
-                  <Calendar className="h-5 w-5" />
-                </div>
-                <span className="text-sm font-medium">Todoist</span>
-              </div>
+            <div className="relative">
+              <Marquee className="py-4">
+                <MarqueeFade side="left" />
+                <MarqueeFade side="right" />
+                <MarqueeContent speed={30} pauseOnHover={true}>
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-blue-500/10 text-blue-600">
+                        <Calendar className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">Todoist</span>
+                      <span className="rounded-full bg-green-500/10 px-2 py-1 text-xs font-medium text-green-600">
+                        Available
+                      </span>
+                    </div>
+                  </MarqueeItem>
 
-              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-green-600">
-                  <Calendar className="h-5 w-5" />
-                </div>
-                <span className="text-sm font-medium">Google Calendar</span>
-              </div>
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-green-500/10 text-green-600">
+                        <Calendar className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">
+                        Google Calendar
+                      </span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
 
-              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/10 text-orange-600">
-                  <Zap className="h-5 w-5" />
-                </div>
-                <span className="text-sm font-medium">Jira</span>
-              </div>
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-orange-500/10 text-orange-600">
+                        <Zap className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">Jira</span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
 
-              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/10 text-purple-600">
-                  <GitBranch className="h-5 w-5" />
-                </div>
-                <span className="text-sm font-medium">GitHub</span>
-              </div>
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-purple-500/10 text-purple-600">
+                        <GitBranch className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">GitHub</span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
 
-              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-600">
-                  <Users className="h-5 w-5" />
-                </div>
-                <span className="text-sm font-medium">Slack</span>
-              </div>
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-600">
+                        <MessageSquare className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">Slack</span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
 
-              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
-                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500/10 text-gray-600">
-                  <span className="text-xs font-bold">+</span>
-                </div>
-                <span className="text-sm font-medium">More soon</span>
-              </div>
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-red-500/10 text-red-600">
+                        <FileText className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">Notion</span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
+
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-cyan-500/10 text-cyan-600">
+                        <Database className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">Linear</span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
+
+                  <MarqueeItem className="mx-4">
+                    <div className="bg-card/50 border-border/30 flex flex-col items-center gap-3 rounded-xl border p-6 shadow-sm transition-all hover:scale-105 hover:shadow-md">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500/10 text-yellow-600">
+                        <Mail className="h-6 w-6" />
+                      </div>
+                      <span className="text-sm font-medium">Gmail</span>
+                      <span className="rounded-full bg-orange-500/10 px-2 py-1 text-xs font-medium text-orange-600">
+                        Coming Soon
+                      </span>
+                    </div>
+                  </MarqueeItem>
+                </MarqueeContent>
+              </Marquee>
             </div>
           </div>
 
