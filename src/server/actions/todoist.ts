@@ -23,22 +23,29 @@ export async function getTodoistTasks(
     // If dateRange is provided and it's a custom filter, use it for date-based filtering
     if (filterName === "custom" && dateRange?.from) {
       const fromDate = format(dateRange.from, "yyyy-MM-dd");
-      const queryParts = [`due after: ${fromDate}`];
+      const queryParts = [];
       
+      // Para data personalizada, usamos "due after:" e "due before:" conforme documentação
       if (dateRange.to) {
+        // Se tem data fim, busca tarefas entre as datas
         const toDate = format(dateRange.to, "yyyy-MM-dd");
+        queryParts.push(`due after: ${fromDate}`);
         queryParts.push(`due before: ${toDate}`);
+      } else {
+        // Se não tem data fim, busca tarefas apenas do dia específico
+        queryParts.push(`due: ${fromDate}`);
       }
       
       todoistFilterQuery = queryParts.join(" & ");
     } else {
-      // Use predefined filters
+      // Use predefined filters according to Todoist documentation
       switch (filterName) {
         case "today":
           todoistFilterQuery = "today | overdue";
           break;
         case "next7days":
-          todoistFilterQuery = "due before: +7 days";
+          // Corrigido: usar +8 days para incluir os próximos 7 dias completos
+          todoistFilterQuery = "due before: +8 days";
           break;
         default:
           throw new Error(`Unsupported filter: ${filterName}`);
