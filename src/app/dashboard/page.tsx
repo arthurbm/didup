@@ -37,6 +37,12 @@ import {
   Menu,
   ArrowUpRight,
   ArrowLeft,
+  Calendar,
+  Zap,
+  GitBranch,
+  Users,
+  Plus,
+  Settings,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -201,12 +207,87 @@ export default function DashboardPage() {
           <div className="mx-auto max-w-5xl space-y-12">
             <div className="mx-auto max-w-2xl space-y-4 text-center">
               <h1 className="text-foreground text-4xl font-bold tracking-tight md:text-5xl">
-                Connect your Todoist account
+                Connect your work tools
               </h1>
               <p className="text-muted-foreground mt-4 text-xl leading-relaxed">
-                Let&apos;s help you remember and reflect on what you&apos;ve
-                accomplished.
+                Start with Todoist and we&apos;ll add more integrations to build
+                your complete work story.
               </p>
+            </div>
+
+            {/* Integration Status Cards */}
+            <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
+              <Card className="bg-card/50 border-border/30 border">
+                <CardContent className="flex flex-col items-center gap-2 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-600">
+                    <Calendar className="h-5 w-5" />
+                  </div>
+                  <span className="text-sm font-medium">Todoist</span>
+                  <span className="text-muted-foreground text-xs">
+                    Ready to connect
+                  </span>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/30 border-border/20 border opacity-60">
+                <CardContent className="flex flex-col items-center gap-2 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-green-600">
+                    <Calendar className="h-5 w-5" />
+                  </div>
+                  <span className="text-sm font-medium">Google Calendar</span>
+                  <span className="text-muted-foreground text-xs">
+                    Coming soon
+                  </span>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/30 border-border/20 border opacity-60">
+                <CardContent className="flex flex-col items-center gap-2 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/10 text-orange-600">
+                    <Zap className="h-5 w-5" />
+                  </div>
+                  <span className="text-sm font-medium">Jira</span>
+                  <span className="text-muted-foreground text-xs">
+                    Coming soon
+                  </span>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/30 border-border/20 border opacity-60">
+                <CardContent className="flex flex-col items-center gap-2 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/10 text-purple-600">
+                    <GitBranch className="h-5 w-5" />
+                  </div>
+                  <span className="text-sm font-medium">GitHub</span>
+                  <span className="text-muted-foreground text-xs">
+                    Coming soon
+                  </span>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/30 border-border/20 border opacity-60">
+                <CardContent className="flex flex-col items-center gap-2 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-600">
+                    <Users className="h-5 w-5" />
+                  </div>
+                  <span className="text-sm font-medium">Slack</span>
+                  <span className="text-muted-foreground text-xs">
+                    Coming soon
+                  </span>
+                </CardContent>
+              </Card>
+
+              <Card className="bg-card/30 border-border/20 border opacity-60">
+                <CardContent className="flex flex-col items-center gap-2 p-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500/10 text-gray-600">
+                    <Plus className="h-5 w-5" />
+                  </div>
+                  <span className="text-sm font-medium">More tools</span>
+                  <span className="text-muted-foreground text-xs">
+                    Request integration
+                  </span>
+                </CardContent>
+              </Card>
             </div>
 
             <Card className="bg-card/50 border-border/30 border shadow-sm">
@@ -214,8 +295,14 @@ export default function DashboardPage() {
                 <div className="grid gap-10 md:grid-cols-2">
                   <div className="space-y-6">
                     <h2 className="text-foreground text-2xl font-semibold">
-                      Connect to Todoist
+                      Start with Todoist
                     </h2>
+                    <p className="text-muted-foreground text-sm">
+                      We&apos;re starting with Todoist to help you track your
+                      task accomplishments. More integrations are coming soon to
+                      give you a complete view of your work across all
+                      platforms.
+                    </p>
 
                     <div className="space-y-4">
                       <div className="flex items-start">
@@ -298,21 +385,54 @@ export default function DashboardPage() {
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row">
               <div>
                 <h1 className="text-foreground text-2xl font-bold">
-                  Your Accomplishments
+                  Your Work Story
                 </h1>
                 <p className="text-muted-foreground mt-1">
-                  Select a time period to review what you&apos;ve done
+                  Currently showing data from Todoist. More integrations coming
+                  soon.
                 </p>
               </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleResetAndChangeKey}
-                className="border-border hover:bg-accent"
-              >
-                Change API Key
-              </Button>
+              <div className="flex gap-2">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="border-border hover:bg-accent"
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  Manage Integrations
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={handleResetAndChangeKey}
+                  className="border-border hover:bg-accent"
+                >
+                  Change API Key
+                </Button>
+              </div>
             </div>
+
+            {/* Connected Sources */}
+            <Card className="bg-card/50 border-border/30 border shadow-sm">
+              <CardContent className="p-6">
+                <h2 className="text-foreground mb-4 text-lg font-medium">
+                  Connected Sources
+                </h2>
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-2 rounded-full bg-blue-500/10 px-3 py-2 text-blue-600">
+                    <Calendar className="h-4 w-4" />
+                    <span className="text-sm font-medium">Todoist</span>
+                    <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  </div>
+                  <div className="text-muted-foreground flex items-center gap-2">
+                    <Plus className="h-4 w-4" />
+                    <span className="text-sm">
+                      More integrations coming soon
+                    </span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             <Card className="bg-card/50 border-border/30 border shadow-sm">
               <CardContent className="p-6">
@@ -349,8 +469,8 @@ export default function DashboardPage() {
       <footer className="border-border/10 bg-background border-t py-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} Didup. Helping you remember and
-            reflect on what you&apos;ve accomplished.
+            &copy; {new Date().getFullYear()} Didup. Bringing your scattered
+            work life together.
           </p>
         </div>
       </footer>

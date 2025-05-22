@@ -9,6 +9,9 @@ import {
   Calendar,
   Menu,
   Sparkles,
+  Zap,
+  GitBranch,
+  Users,
 } from "lucide-react";
 import Link from "next/link";
 
@@ -43,20 +46,21 @@ export default function HomePage() {
             <div className="space-y-4 text-center">
               <div className="bg-primary/10 text-primary mb-4 inline-flex items-center justify-center rounded-full px-3 py-1 text-sm font-medium">
                 <Sparkles className="mr-1 h-3.5 w-3.5" />
-                <span>Never forget what you&apos;ve accomplished</span>
+                <span>Connect all your work tools in one place</span>
               </div>
 
               <h1 className="text-foreground text-4xl font-bold tracking-tight md:text-5xl lg:text-6xl">
-                Remember everything you&apos;ve{" "}
+                Never lose track of your{" "}
                 <span className="from-primary to-primary/60 bg-gradient-to-r bg-clip-text text-transparent">
-                  accomplished
+                  work journey
                 </span>
               </h1>
 
               <p className="text-muted-foreground mx-auto mt-4 max-w-2xl text-xl leading-relaxed">
-                Stop struggling to recall what you&apos;ve done. Didup connects
-                to your Todoist and helps you celebrate your achievements,
-                reflect on your journey, and plan your future.
+                Stop struggling to remember what you worked on across Todoist,
+                Jira, Calendar, and other scattered tools. Didup brings
+                everything together and helps you reflect on your complete work
+                story.
               </p>
 
               <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
@@ -66,7 +70,7 @@ export default function HomePage() {
                   asChild
                 >
                   <Link href="/dashboard">
-                    Get Started
+                    Connect Your Tools
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
@@ -75,12 +79,12 @@ export default function HomePage() {
                   size="lg"
                   className="border-primary/20 bg-primary/5 rounded-full px-8 py-6 text-base font-medium"
                 >
-                  How it works
+                  See Integrations
                 </Button>
               </div>
             </div>
 
-            {/* Visual Element */}
+            {/* Visual Element - Updated to show multiple sources */}
             <div className="border-border/40 relative mx-auto mt-12 max-w-3xl overflow-hidden rounded-xl border shadow-xl">
               <div className="bg-card/50 from-primary/5 bg-gradient-to-b to-transparent p-1">
                 <div className="bg-card rounded-lg p-4">
@@ -91,29 +95,39 @@ export default function HomePage() {
                       <div className="bg-secondary h-3 w-3 rounded-full"></div>
                     </div>
                     <div className="text-muted-foreground text-xs">
-                      Your Accomplishments
+                      Your Complete Work Story
                     </div>
                   </div>
 
                   <div className="space-y-3">
                     <div className="bg-accent/30 rounded-md p-3">
                       <p className="text-sm font-medium">
-                        This week you completed 12 tasks across 3 projects
+                        This week: 12 tasks completed, 8 meetings attended, 3
+                        tickets resolved
                       </p>
                     </div>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <div className="bg-primary h-2 w-2 rounded-full"></div>
-                        <p className="text-sm font-medium">Monday, June 10</p>
+                        <div className="h-2 w-2 rounded-full bg-blue-500"></div>
+                        <p className="text-sm font-medium">Todoist</p>
+                        <span className="text-muted-foreground text-xs">
+                          • Finished quarterly report
+                        </span>
                       </div>
-                      <ul className="space-y-2 pl-4">
-                        <li className="bg-card border-border/40 rounded-md border p-2 text-xs">
-                          Finished quarterly report
-                        </li>
-                        <li className="bg-card border-border/40 rounded-md border p-2 text-xs">
-                          Updated website content
-                        </li>
-                      </ul>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                        <p className="text-sm font-medium">Calendar</p>
+                        <span className="text-muted-foreground text-xs">
+                          • Team standup, Client presentation
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="h-2 w-2 rounded-full bg-orange-500"></div>
+                        <p className="text-sm font-medium">Jira</p>
+                        <span className="text-muted-foreground text-xs">
+                          • Fixed authentication bug
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -122,15 +136,72 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* Integrations Preview */}
+          <div className="mx-auto max-w-5xl">
+            <div className="mb-12 text-center">
+              <h2 className="text-foreground text-3xl font-bold">
+                Connect your scattered work tools
+              </h2>
+              <p className="text-muted-foreground mx-auto mt-3 max-w-2xl">
+                Didup integrates with the tools you already use, creating a
+                unified view of your work across platforms
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-4 lg:grid-cols-6">
+              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-blue-600">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <span className="text-sm font-medium">Todoist</span>
+              </div>
+
+              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-green-500/10 text-green-600">
+                  <Calendar className="h-5 w-5" />
+                </div>
+                <span className="text-sm font-medium">Google Calendar</span>
+              </div>
+
+              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-500/10 text-orange-600">
+                  <Zap className="h-5 w-5" />
+                </div>
+                <span className="text-sm font-medium">Jira</span>
+              </div>
+
+              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-purple-500/10 text-purple-600">
+                  <GitBranch className="h-5 w-5" />
+                </div>
+                <span className="text-sm font-medium">GitHub</span>
+              </div>
+
+              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-indigo-500/10 text-indigo-600">
+                  <Users className="h-5 w-5" />
+                </div>
+                <span className="text-sm font-medium">Slack</span>
+              </div>
+
+              <div className="bg-card/50 border-border/30 flex flex-col items-center gap-2 rounded-lg border p-4">
+                <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-500/10 text-gray-600">
+                  <span className="text-xs font-bold">+</span>
+                </div>
+                <span className="text-sm font-medium">More soon</span>
+              </div>
+            </div>
+          </div>
+
           {/* Features Section */}
           <div className="mx-auto max-w-5xl">
             <div className="mb-12 text-center">
               <h2 className="text-foreground text-3xl font-bold">
-                How Didup helps you
+                One place for your entire work story
               </h2>
               <p className="text-muted-foreground mx-auto mt-3 max-w-2xl">
-                Didup transforms your Todoist tasks into meaningful reflections
-                of your journey
+                Transform scattered activities into meaningful insights about
+                your work journey
               </p>
             </div>
 
@@ -139,14 +210,14 @@ export default function HomePage() {
                 <div className="bg-primary/10 h-1.5 w-full"></div>
                 <CardContent className="space-y-3 p-6">
                   <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-                    <BookOpen className="h-5 w-5" />
+                    <Zap className="h-5 w-5" />
                   </div>
                   <h3 className="text-foreground text-xl font-medium">
-                    Never forget
+                    Unified timeline
                   </h3>
                   <p className="text-muted-foreground">
-                    Easily recall what you&apos;ve accomplished each day, week,
-                    or month. No more struggling to remember your achievements.
+                    See everything you worked on across all platforms in one
+                    chronological view. No more hunting through different apps.
                   </p>
                 </CardContent>
               </Card>
@@ -158,11 +229,11 @@ export default function HomePage() {
                     <BrainCircuit className="h-5 w-5" />
                   </div>
                   <h3 className="text-foreground text-xl font-medium">
-                    AI reflections
+                    Smart insights
                   </h3>
                   <p className="text-muted-foreground">
-                    Get thoughtful AI-generated narratives that help you see
-                    patterns and meaning in your completed work.
+                    AI analyzes your work patterns across tools to give you
+                    meaningful summaries and help you understand your impact.
                   </p>
                 </CardContent>
               </Card>
@@ -171,14 +242,15 @@ export default function HomePage() {
                 <div className="bg-primary/10 h-1.5 w-full"></div>
                 <CardContent className="space-y-3 p-6">
                   <div className="bg-primary/10 text-primary flex h-10 w-10 items-center justify-center rounded-full">
-                    <Calendar className="h-5 w-5" />
+                    <BookOpen className="h-5 w-5" />
                   </div>
                   <h3 className="text-foreground text-xl font-medium">
-                    Flexible timeframes
+                    Easy sharing
                   </h3>
                   <p className="text-muted-foreground">
-                    Review your accomplishments for any time period, from today
-                    to custom date ranges, giving you complete control.
+                    Quickly generate summaries for standups, reviews, or
+                    reports. Never struggle to remember what you&apos;ve been
+                    working on.
                   </p>
                 </CardContent>
               </Card>
@@ -193,17 +265,18 @@ export default function HomePage() {
               </div>
               <blockquote className="relative">
                 <p className="text-foreground text-lg leading-relaxed italic md:text-xl">
-                  I used to struggle in meetings when asked what I&apos;d been
-                  working on. Now with Didup, I can easily look back and share
-                  my accomplishments with confidence.
+                  I used to spend 15 minutes before every standup trying to
+                  remember what I worked on yesterday across Jira, Slack, and my
+                  calendar. Now I just open Didup and have everything ready in
+                  seconds.
                 </p>
                 <footer className="mt-4">
                   <div className="flex items-center">
                     <div className="bg-primary/20 h-10 w-10 rounded-full"></div>
                     <div className="ml-3">
-                      <p className="text-foreground font-medium">Sarah L.</p>
+                      <p className="text-foreground font-medium">Marcus R.</p>
                       <p className="text-muted-foreground text-sm">
-                        Product Manager
+                        Software Engineer
                       </p>
                     </div>
                   </div>
@@ -216,11 +289,11 @@ export default function HomePage() {
           <div className="mx-auto max-w-4xl text-center">
             <div className="from-primary/10 to-primary/5 rounded-xl bg-gradient-to-b p-8 md:p-12">
               <h2 className="text-foreground text-3xl font-bold">
-                Ready to remember everything you&apos;ve done?
+                Ready to see your complete work story?
               </h2>
               <p className="text-muted-foreground mx-auto mt-3 max-w-2xl text-lg">
-                Connect your Todoist account and start reflecting on your
-                accomplishments today.
+                Connect your tools and start getting a unified view of
+                everything you&apos;ve accomplished.
               </p>
               <Button
                 size="lg"
@@ -228,7 +301,7 @@ export default function HomePage() {
                 asChild
               >
                 <Link href="/dashboard">
-                  Get Started Now
+                  Start Connecting Tools
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
@@ -240,8 +313,8 @@ export default function HomePage() {
       <footer className="border-border/10 bg-background border-t py-6">
         <div className="container mx-auto px-4 text-center">
           <p className="text-muted-foreground text-sm">
-            &copy; {new Date().getFullYear()} Didup. Helping you remember and
-            reflect on what you&apos;ve accomplished.
+            &copy; {new Date().getFullYear()} Didup. Bringing your scattered
+            work life together.
           </p>
         </div>
       </footer>
