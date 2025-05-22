@@ -74,9 +74,14 @@ This plan outlines the steps to build the initial version of Didup, focusing on 
 
 ### VI. Styling and UX
 
-- [ ] Apply basic Tailwind CSS for a clean layout.
-- [ ] Ensure loading and error states are clearly communicated to the user.
-- [ ] Add shadcn/ui components as needed (e.g. `Card` for displaying sections).
+- [x] Apply basic Tailwind CSS for a clean layout.
+- [x] Ensure loading and error states are clearly communicated to the user.
+- [x] Add shadcn/ui components as needed (e.g. `Card` for displaying sections).
+- [x] Implement enhanced date range selection with a calendar picker.
+- [x] Add visual grouping of tasks by due date.
+- [x] Improve task display with priority indicators and labels.
+- [x] Create smooth loading animations and better error messages.
+- [x] Apply a more visually appealing color scheme and layout.
 
 ### VII. Future Enhancements (Post-MVP)
 

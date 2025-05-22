@@ -1,10 +1,13 @@
 'use server';
 
 import { TodoistApi, type Task } from "@doist/todoist-api-typescript";
+import { format } from "date-fns";
+import { type TaskDateRange } from "@/components/didup/date-range-selector";
 
 export async function getTodoistTasks(
   apiKey: string,
-  filterName: string // Renamed to avoid confusion with SDK's filter property
+  filterName: string,
+  dateRange?: TaskDateRange
 ): Promise<Task[]> {
   if (!apiKey) {
     throw new Error("Todoist API key is required.");
@@ -17,18 +20,29 @@ export async function getTodoistTasks(
     const api = new TodoistApi(apiKey);
     let todoistFilterQuery: string;
 
-    switch (filterName) {
-      case "today":
-        todoistFilterQuery = "today | overdue";
-        break;
-      case "next7days":
-        // As per Todoist documentation for filters:
-        // "due before: +X days" (e.g. due before: +7 days)
-        // "due after: +X days" (e.g. due after: +7 days)
-        todoistFilterQuery = "due before: +7 days";
-        break;
-      default:
-        throw new Error(`Unsupported filter: ${filterName}`);
+    // If dateRange is provided and it's a custom filter, use it for date-based filtering
+    if (filterName === "custom" && dateRange?.from) {
+      const fromDate = format(dateRange.from, "yyyy-MM-dd");
+      const queryParts = [`due after: ${fromDate}`];
+      
+      if (dateRange.to) {
+        const toDate = format(dateRange.to, "yyyy-MM-dd");
+        queryParts.push(`due before: ${toDate}`);
+      }
+      
+      todoistFilterQuery = queryParts.join(" & ");
+    } else {
+      // Use predefined filters
+      switch (filterName) {
+        case "today":
+          todoistFilterQuery = "today | overdue";
+          break;
+        case "next7days":
+          todoistFilterQuery = "due before: +7 days";
+          break;
+        default:
+          throw new Error(`Unsupported filter: ${filterName}`);
+      }
     }
 
     const tasks = await api.getTasksByFilter({
