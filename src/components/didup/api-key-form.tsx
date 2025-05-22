@@ -3,7 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Key, ArrowRight } from "lucide-react";
+import { Key, ArrowRight, Lock } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -36,7 +36,7 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
         <FormField
           control={form.control}
           name="apiKey"
@@ -49,7 +49,7 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
                   </div>
                   <Input
                     placeholder="Enter your Todoist API key"
-                    className="bg-card/30 border-border/50 focus-visible:ring-primary/20 pl-9"
+                    className="bg-card/30 border-border/50 focus-visible:ring-primary/20 h-12 rounded-md pl-9"
                     {...field}
                   />
                 </div>
@@ -58,14 +58,24 @@ export function ApiKeyForm({ onSubmit, isLoading }: ApiKeyFormProps) {
             </FormItem>
           )}
         />
-        <Button
-          type="submit"
-          disabled={isLoading}
-          className="flex w-full items-center justify-center gap-2 rounded-md"
-        >
-          {isLoading ? "Connecting..." : "Connect Todoist"}
-          {!isLoading && <ArrowRight className="h-4 w-4" />}
-        </Button>
+        <div className="space-y-3">
+          <Button
+            type="submit"
+            disabled={isLoading}
+            className="group relative flex h-12 w-full items-center justify-center gap-2 overflow-hidden rounded-md"
+          >
+            <span className="relative z-10 flex items-center gap-2">
+              {isLoading ? "Connecting..." : "Connect Todoist"}
+              {!isLoading && <ArrowRight className="h-4 w-4" />}
+            </span>
+            <span className="from-primary to-primary/80 absolute inset-0 bg-gradient-to-r opacity-0 transition-opacity group-hover:opacity-100"></span>
+          </Button>
+
+          <div className="text-muted-foreground flex items-center justify-center gap-2 text-xs">
+            <Lock className="h-3 w-3" />
+            <span>Secure connection</span>
+          </div>
+        </div>
       </form>
     </Form>
   );

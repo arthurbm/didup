@@ -10,7 +10,7 @@ import {
   startOfToday,
   endOfToday,
 } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Clock, ArrowRight } from "lucide-react";
 import { type DateRange } from "react-day-picker";
 
 import { cn } from "@/lib/utils";
@@ -88,37 +88,45 @@ export function DateRangeSelector({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="flex flex-wrap gap-2">
-        <Button
-          variant={selectedFilter === "today" ? "default" : "outline"}
-          onClick={() => handlePresetClick("today")}
-          disabled={disabled}
-          size="sm"
-          className={cn(
-            "h-9 rounded-md text-sm font-normal",
-            selectedFilter === "today"
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
-          )}
-        >
-          Today
-        </Button>
-        <Button
-          variant={selectedFilter === "next7days" ? "default" : "outline"}
-          onClick={() => handlePresetClick("next7days")}
-          disabled={disabled}
-          size="sm"
-          className={cn(
-            "h-9 rounded-md text-sm font-normal",
-            selectedFilter === "next7days"
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
-          )}
-        >
-          Next 7 Days
-        </Button>
+    <div className="space-y-6">
+      <div className="flex flex-col space-y-4">
+        <h3 className="text-foreground text-sm font-medium">Quick Select</h3>
+        <div className="flex flex-wrap gap-3">
+          <Button
+            variant={selectedFilter === "today" ? "default" : "outline"}
+            onClick={() => handlePresetClick("today")}
+            disabled={disabled}
+            size="sm"
+            className={cn(
+              "flex h-10 items-center gap-2 rounded-full px-5 text-sm font-medium",
+              selectedFilter === "today"
+                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
+            )}
+          >
+            <Clock className="h-3.5 w-3.5" />
+            Today
+          </Button>
+          <Button
+            variant={selectedFilter === "next7days" ? "default" : "outline"}
+            onClick={() => handlePresetClick("next7days")}
+            disabled={disabled}
+            size="sm"
+            className={cn(
+              "flex h-10 items-center gap-2 rounded-full px-5 text-sm font-medium",
+              selectedFilter === "next7days"
+                ? "bg-primary text-primary-foreground hover:bg-primary/90"
+                : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
+            )}
+          >
+            <ArrowRight className="h-3.5 w-3.5" />
+            Next 7 Days
+          </Button>
+        </div>
+      </div>
 
+      <div className="space-y-4">
+        <h3 className="text-foreground text-sm font-medium">Custom Range</h3>
         <Popover>
           <PopoverTrigger asChild>
             <Button
@@ -126,7 +134,7 @@ export function DateRangeSelector({
               variant={selectedFilter === "custom" ? "default" : "outline"}
               size="sm"
               className={cn(
-                "ml-auto h-9 min-w-[220px] justify-start rounded-md text-sm font-normal",
+                "h-10 w-full justify-start rounded-full px-5 text-sm font-medium",
                 selectedFilter === "custom"
                   ? "bg-primary text-primary-foreground hover:bg-primary/90"
                   : "border-border/50 bg-card/30 text-foreground hover:bg-accent/50",
@@ -145,11 +153,20 @@ export function DateRangeSelector({
                   format(date.from, "MMM dd, yyyy")
                 )
               ) : (
-                <span>Custom range</span>
+                <span>Select custom date range</span>
               )}
             </Button>
           </PopoverTrigger>
-          <PopoverContent className="border-border/50 w-auto p-0" align="end">
+          <PopoverContent
+            className="border-border/50 w-auto p-0"
+            align="center"
+            sideOffset={8}
+          >
+            <div className="bg-card/50 border-border/30 border-b p-3">
+              <h4 className="text-foreground text-sm font-medium">
+                Select Date Range
+              </h4>
+            </div>
             <Calendar
               initialFocus
               mode="range"

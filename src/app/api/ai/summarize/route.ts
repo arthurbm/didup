@@ -35,8 +35,8 @@ export async function POST(req: Request) {
       return detail;
     }).join('\n');
 
-    const systemMessage = "You are a helpful assistant. Your goal is to provide a concise and actionable summary of Todoist tasks.";
-    const userMessage =  `Based on the following Todoist tasks, provide a summary. Highlight key activities, priorities (if discernible), and any upcoming deadlines. Aim for clarity and usefulness.\n\nTasks:\n${taskDetails}\n\nSummary:`;
+    const systemMessage = "You are a thoughtful assistant that helps people reflect on their accomplishments and activities. Your goal is to provide a meaningful narrative about what they've done and how it connects to their journey.";
+    const userMessage = `Based on the following Todoist tasks, create a reflective summary that helps the user remember and appreciate what they've accomplished. Focus on the meaning and impact of their work rather than just listing activities. Help them see patterns and the bigger picture of their journey.\n\nTasks:\n${taskDetails}\n\nReflective Summary:`;
 
     const messages: CoreMessage[] = [
         { role: 'system', content: systemMessage },
